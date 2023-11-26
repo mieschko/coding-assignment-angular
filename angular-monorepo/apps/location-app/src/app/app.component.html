@@ -1,16 +1,28 @@
 <div class="app-container">
     <div class="header">
-        <h2>Great Location App</h2>
+      <p-button class="menu-btn" icon="pi pi-bars" (click)="menuVisible = true"></p-button>
+        <h2 class="app-title">Great Location App</h2>
         <div>
             <p-avatar label="KO" pBadge styleClass="mr-5" value="4" [style]="{ 'background-color': '#4caf4f', color: '#ffffff' }"></p-avatar>
         </div>
     </div>
     <div class="main-container">
         <div class="menu-container">
-            <p-panelMenu [model]="items"></p-panelMenu>
+          <div class="mobile-menu">
+            <p-sidebar [(visible)]="menuVisible">
+              <ng-container *ngTemplateOutlet="sideMenu"></ng-container>
+            </p-sidebar>
+          </div>
+          <div class="desktop-menu">
+            <ng-container *ngTemplateOutlet="sideMenu"></ng-container>
+          </div>
         </div>
-        <div>
+        <div class="content-container">
             <router-outlet></router-outlet>
         </div>
     </div>
 </div>
+
+<ng-template #sideMenu>
+  <p-panelMenu [model]="items"></p-panelMenu>
+</ng-template>

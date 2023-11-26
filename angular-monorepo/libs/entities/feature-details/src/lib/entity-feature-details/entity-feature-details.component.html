@@ -1,0 +1,54 @@
+<h2>Entity Details</h2>
+
+<ng-container *ngIf="entityTypes$ | async as entityTypes; else loader">
+  <form [formGroup]="entityDetailsForm">
+    <label for="name">Entity name:</label>
+    <input id="name" pInputText formControlName="name" />
+    <label for="trackingId">Tracking ID:</label>
+    <input id="trackingId" pInputText formControlName="trackingId" />
+    <label>Entity type:</label>
+    <p-dropdown
+      formControlName="entityType"
+      [options]="entityTypes"
+      optionLabel="name"
+      placeholder="Choose type"
+      optionValue="id"
+    ></p-dropdown>
+    <label for="entityId">Entity ID:</label>
+    <input id="entityId" pInputText [value]="entity?.entityId" disabled />
+    <label for="entityStatus">Entity status:</label>
+    <input
+      id="entityStatus"
+      pInputText
+      [value]="entity?.entityStatus"
+      disabled
+    />
+
+    <label for="isActive">Active:</label>
+    <input id="isActive" pInputText [value]="entity?.isActive" disabled />
+    <!--todo: add attributes-->
+  </form>
+  <div class="edit-buttons-container">
+    <ng-container *ngIf="entityDetailsForm.disabled; else editModeButtons">
+      <p-button
+        *ngIf="entityDetailsForm.disabled"
+        label="Edit"
+        (onClick)="onEditClick()"
+      ></p-button>
+    </ng-container>
+    <ng-template #editModeButtons>
+      <p-button
+        label="Cancel"
+        (onClick)="onCancelClick()"
+      ></p-button>
+      <p-button
+        label="Save"
+        (onClick)="onSaveClick()"
+      ></p-button>
+    </ng-template>
+  </div>
+</ng-container>
+
+<ng-template #loader>
+  <p-progressSpinner></p-progressSpinner>
+</ng-template>

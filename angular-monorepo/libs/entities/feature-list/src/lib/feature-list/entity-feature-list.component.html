@@ -1,0 +1,29 @@
+<!--todo: add loader and error handling-->
+<ng-container *ngIf="entities$ | async as entities">
+  <p-table [value]="entities">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Name</th>
+        <th>Tracking ID</th>
+        <th>Type</th>
+        <th>Status</th>
+        <th>Active</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-entity>
+      <tr>
+        <td [routerLink]="['/entity/details']" [state]="{entity}">{{ entity.name }}</td>
+        <td>{{ entity.trackingId }}</td>
+        <td>{{ entity.entityType }}</td>
+        <td>{{ entity.entityStatus }}</td>
+        <td>
+          {{ entity.isActive }}
+          <i
+            *ngIf="!entity.isActive"
+            class="pi pi-exclamation-triangle inactive-icon"
+          ></i>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</ng-container>

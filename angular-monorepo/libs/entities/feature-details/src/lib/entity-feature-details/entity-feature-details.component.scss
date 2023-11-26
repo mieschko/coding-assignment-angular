@@ -1,0 +1,37 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+
+  h2 {
+    align-self: flex-start;
+  }
+
+  form {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 1rem;
+
+    label {
+      justify-self: flex-end;
+    }
+
+    ::ng-deep .p-dropdown {
+        width: 100%
+      }
+
+  }
+
+  .edit-buttons-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    width: 30rem;
+    margin-top: 2rem;
+  }
+}
+
+

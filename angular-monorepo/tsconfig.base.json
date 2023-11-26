@@ -18,6 +18,9 @@
       "@angular-monorepo/entities/data-repository": [
         "libs/entities/data-repository/src/index.ts"
       ],
+      "@angular-monorepo/entities/feature-details": [
+        "libs/entities/feature-details/src/index.ts"
+      ],
       "@angular-monorepo/entities/feature-homepage": [
         "libs/entities/feature-homepage/src/index.ts"
       ],
@@ -26,7 +29,7 @@
       ],
       "@angular-monorepo/entities/feature-location-dashboard": [
         "libs/entities/feature-location-dashboard/src/index.ts"
-      ],
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
